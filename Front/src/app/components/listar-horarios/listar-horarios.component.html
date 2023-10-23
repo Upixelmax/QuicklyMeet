@@ -9,8 +9,8 @@
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE HORARIOS</span>
-                    <button class="btn btn-success float-end" routerLink="/crear-horario">AGREGAR</button>
-                    <table class="table table-striped mt-3">
+                    <button class="btn btn-success float-end" routerLink="/crear-horario">NUEVO</button>
+                    <table *ngIf="listHorarios.length > 0" class="table table-striped mt-3">
                         <thead>
                           <tr>
                             <th scope="col">Fecha</th>
@@ -20,19 +20,20 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>10/10/2023</td>
-                                <td>16:25</td>
-                                <td>Disponible</td>
-                                <td>
-                                    <i class="fas fa-edit text-primary"></i>
-                                    <i class="fas fa-trash text-danger"></i>
-                                </td>
-                            </tr>
+                          <tr *ngFor="let horario of listHorarios">
+                            <td>{{ horario.fecha }}</td>
+                            <td>{{ horario.hora }}</td>
+                            <td>{{ horario.estado }}</td>
+                            <td>
+                                <i [routerLink]="['/editar-horario', horario._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="eliminarHorario(horario._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listHorarios.length == 0">No hay horarios para mostrar</h5>
                 </div>
             </div>
         </div>
     </div>
-</div>
+  </div>
