@@ -1,17 +1,33 @@
-const express = require('express');
-const conectarDB = require('./config/db');
-const cors = require('cors');
+import express from 'express'
+import cors from 'cors'
+import path from 'path'
+import mongoose from 'mongoose'
+import router from './router'
+import * as dotenv from 'dotenv'
 
-//Creamos el servidor
+dotenv.config()
+
+// CONEXION A LA BASE DE DATOS
+mongoose.Promise = global.Promise
+const dbUrl = "mongodb://127.0.0.1/QM";
+mongoose.connect(
+    dbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology:true,
+    }
+).then(mongoose => console.log("CONECTADO A LA BD DE MONGODB PUERTO 27017"))
+.catch(err => console.log(err));
 
 const app = express();
-conectarDB();
-
 app.use(cors());
+
 app.use(express.json());
-app.use('/api/horario', require('./routes/horario'));
+app.use(express.urlencoded({extended: true}))
+app.use(express.static(path.join(__dirname,'public')))
+app.use('/api/',router)
 
+app.set('port', process.env.PORT || 3000);
 
-app.listen(4000, ()=>{
-    console.log('El servidor esta funcionando bien')
+app.listen(app.get('port'), () => {
+    console.log("EL SERVIDOR SE ESTA EJECUTANDO EN EL PUERTO 3000")
 })

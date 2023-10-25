@@ -1,20 +1,30 @@
 {
-  "name": "qmapi",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "API",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ."
+    "start": "nodemon --exec babel-node index.js"
   },
-  "author": "B8",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
   "dependencies": {
+    "@vimeo/vimeo": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.6.3"
+    "express-promise-router": "^4.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.2",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.2"
   }
 }

@@ -2,7 +2,6 @@ const Horario = require("../models/Horario");
 
 
 
-
 exports.crearHorario = async (req, res) => {
     try{
         let horario;
