@@ -1,7 +1,26 @@
-footer{
-    position: relative;
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-#footer_text_color{
+
+footer h6{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+#footer_text_color {
     color: black;
-    font-family: 'Anton', sans-serif;
+    
+    font-family: 'Montserrat', sans-serif;
 }
+
+#copyright-bar{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,9,121,0.5298494397759104) 52%, rgba(0,212,255,1) 100%);
+}
+
