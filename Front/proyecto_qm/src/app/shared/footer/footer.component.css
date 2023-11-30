@@ -1,0 +1,7 @@
+footer{
+    position: relative;
+}
+#footer_text_color{
+    color: black;
+    font-family: 'Anton', sans-serif;
+}
