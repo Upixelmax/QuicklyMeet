@@ -109,6 +109,10 @@
   opacity: .24;
 }
 
+.row{
+  
+  width: 100.8%;
+}
 
 #titulo-1{
   font-family: 'Montserrat', sans-serif;
@@ -117,16 +121,11 @@
 .seccion-carrusel img{
   max-width: 100%;
   max-width: 100%;
+  
 }
 
 
-.col-5{
-  border: 2px solid red;
-}
 
-.col-7{
-  border: 2px solid red;
-}
 
 
 #cuadro-login{

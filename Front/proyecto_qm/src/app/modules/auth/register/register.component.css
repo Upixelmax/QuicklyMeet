@@ -1,0 +1,181 @@
+.rbt-contact-form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .rbt-contact-form h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    
+  }
+  
+  .rbt-contact-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .rbt-contact-form .form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .rbt-contact-form .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .rbt-contact-form .focus-border {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  .rbt-contact-form .form-group:focus-within .focus-border {
+    opacity: 1;
+  }
+  
+  .rbt-contact-form .rbt-checkbox {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .rbt-contact-form .rbt-checkbox input {
+    margin-right: 5px;
+  }
+  
+  .rbt-contact-form .rbt-lost-password {
+    text-align: right;
+    font-size: 14px;
+  }
+  
+  .rbt-contact-form .rbt-lost-password a {
+    color: #007bff;
+  }
+  
+  .rbt-contact-form .form-submit-group {
+    text-align: center;
+  }
+  
+
+  .button-78 {
+    align-items: center;
+    appearance: none;
+    background-clip: padding-box;
+    background-color: initial;
+    background-image: none;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 24px;
+    margin-top: 40px;
+    min-height: 64px;
+    outline: none;
+    overflow: visible;
+    padding: 19px 26px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: auto;
+    word-break: keep-all;
+    z-index: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .button-78 {
+      padding: 19px 32px;
+    }
+  }
+  
+  .button-78:before,
+  .button-78:after {
+    border-radius: 20px;
+  }
+  
+  .button-78:before {
+    background-image: linear-gradient(92.83deg, rgb(13, 185, 253)  0, rgb(13, 185, 253) 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+  }
+  
+  .button-78:after {
+    background-color: initial;
+    background-image: linear-gradient(#9a77bd 0, rgba(60,9,121,0.5298494397759104) 100%);
+    bottom: 0px;
+    content: "";
+    display: block;
+    left: 0px;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+  }
+  
+  .button-78:hover:not(:disabled):before {
+    background: linear-gradient(92.83deg, rgba(60,9,121,0.5298494397759104) 0%, rgb(13, 185, 253) 100%);
+  }
+  
+  .button-78:hover:not(:disabled):after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  
+  .button-78:active:not(:disabled) {
+    color: #ccc;
+  }
+  
+  .button-78:active:not(:disabled):before {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #b747d3 0, #2facf5 100%);
+  }
+  
+  .button-78:active:not(:disabled):after {
+    background-image: linear-gradient(#cb45ec 0, #2facf5 100%);
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+  }
+  
+  .button-78:disabled {
+    cursor: default;
+    opacity: .24;
+  }
+
