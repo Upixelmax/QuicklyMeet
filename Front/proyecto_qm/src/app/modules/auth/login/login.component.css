@@ -1,0 +1,84 @@
+.rbt-contact-form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .rbt-contact-form h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  
+  .rbt-contact-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .rbt-contact-form .form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .rbt-contact-form .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .rbt-contact-form .focus-border {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  .rbt-contact-form .form-group:focus-within .focus-border {
+    opacity: 1;
+  }
+  
+  .rbt-contact-form .rbt-checkbox {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .rbt-contact-form .rbt-checkbox input {
+    margin-right: 5px;
+  }
+  
+  .rbt-contact-form .rbt-lost-password {
+    text-align: right;
+    font-size: 14px;
+  }
+  
+  .rbt-contact-form .rbt-lost-password a {
+    color: #007bff;
+  }
+  
+  .rbt-contact-form .form-submit-group {
+    text-align: center;
+  }
+  
+  .rbt-contact-form .form-submit-group button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #007bff;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .rbt-contact-form .form-submit-group button:hover {
+    background-color: #0056b3;
+  }
+  
