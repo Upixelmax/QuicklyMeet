@@ -12,6 +12,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CrearHorarioComponent } from './crear-horario/crear-horario.component';
 import { EditarHorarioComponent } from './editar-horario/editar-horario.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 @NgModule({
@@ -25,12 +31,17 @@ import { EditarHorarioComponent } from './editar-horario/editar-horario.componen
     CommonModule,
     HorarioRoutingModule,
     SharedModule,
-    
-    
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaterialTimepickerModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-CL' }
+  ],
   bootstrap: [
     HorarioComponent,
     ListarHorariosComponent
