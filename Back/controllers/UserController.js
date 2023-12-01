@@ -48,7 +48,7 @@ export default {
                             name: user.name,
                             surname: user.surname,
                             email: user.email,
-                            // avatar: user.avatar 
+                            rol: user.rol, 
                         }
                     }
                     res.status(200).json({

@@ -8,10 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
+import { HomePrestadorComponent } from './modules/home-prestador/home-prestador.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePrestadorComponent
   ],
   imports: [
     BrowserModule,

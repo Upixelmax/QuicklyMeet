@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, map, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { URL_SERVICIOS } from 'src/app/config/config';
 
 @Injectable({
@@ -14,20 +14,23 @@ export class AuthService {
     public router: Router,
   ) { }
 
-  login(email:string,password:string){
+  login(email: string, password: string): Observable<any> {
     let URL = URL_SERVICIOS + "/users/login_tienda";
-    return this.http.post(URL,{email: email, password: password}).pipe(
+  
+    return this.http.post(URL, { email: email, password: password }).pipe(
       map((auth: any) => {
-        console.log(auth);
+        console.log("Usuario autenticado con rol:", auth.USER.user.rol);
+  
         const result = this.savelocalStorage(auth);
-        return result;
+        
+        // Devolver un objeto que contenga el resultado y el rol
+        return { result: result, rol: auth.USER.user.rol };
       }),
-      catchError((err:any) => {
-        console.log(err);
+      catchError((err: any) => {
+        console.error('Error al autenticar:', err);
         return of(undefined);
-      }),
-    )
-    ;
+      })
+    );
   }
 
   savelocalStorage(auth:any){
