@@ -17,7 +17,7 @@
   font-weight: 800;
   justify-content: center;
   line-height: 24px;
-  margin: 0;
+  margin-top: 80px;
   min-height: 64px;
   outline: none;
   overflow: visible;
@@ -112,4 +112,23 @@
 
 #titulo-1{
   font-family: 'Montserrat', sans-serif;
+}
+
+.seccion-carrusel img{
+  max-width: 100%;
+  max-width: 100%;
+}
+
+
+.col-5{
+  border: 2px solid red;
+}
+
+.col-7{
+  border: 2px solid red;
+}
+
+
+#cuadro-login{
+  margin: 120px 40px;
 }
