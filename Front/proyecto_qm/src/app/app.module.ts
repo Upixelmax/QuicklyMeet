@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
+import { HomePrestadorComponent } from './modules/home-prestador/home-prestador.component';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -16,7 +17,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePrestadorComponent
   ],
   imports: [
     BrowserModule,

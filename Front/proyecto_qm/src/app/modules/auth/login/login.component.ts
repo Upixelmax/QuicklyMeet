@@ -37,12 +37,15 @@ export class LoginComponent {
       return;
     }
     this.authService.login(this.email_login,this.password_login).subscribe((resp:any) => {
-      console.log(resp);
+      console.log(resp.rol);
       
       
-      if(resp){
+      if (resp.rol === 'cliente') {
         this.router.navigateByUrl('/home');
-      }else{
+      } else if (resp.rol === 'Prestador') {
+        // Lógica para el rol de administrador
+        this.router.navigateByUrl('/home-prestador');
+      } else {
         alert("LAS CREDENCIALES INGRESADAS SON INCORRECTAS");
       }
     })
