@@ -21,7 +21,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    FullCalendarModule,
+    FullCalendarModule,///THIS
 
     FormsModule,
     ReactiveFormsModule,
