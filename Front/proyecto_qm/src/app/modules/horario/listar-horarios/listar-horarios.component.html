@@ -1,8 +1,5 @@
 <app-header></app-header>
 
-
-
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -15,21 +12,18 @@
                             </div>
                         </div>
                     </div>
-                    <br>    
-                    <button class="btn btn-primary" id="ordenarfecha" (click)="alternarOrdenFecha()">Ordenar por Fecha</button>
-                    <a class="button-78 bg-primary" href="horario/crear-horario">
-                        <span class="icon-reverse-wrapper">
-                            <span class="btn-text ">Nuevo</span>
-                        </span>
-                    </a>
-                    
+                    <a class="btn btn-primary" id="nuevo" href="horario/crear-horario">Nuevo</a> 
                     <br>
                     <br>
                     
                     <table *ngIf="listHorarios.length > 0" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Fecha</th>
+                                <th scope="col">Fecha
+                                    <button id="ordenarfecha" (click)="alternarOrdenFecha()">
+                                        <i class="fas fa-sort"></i>
+                                    </button>
+                                </th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col"></th>
