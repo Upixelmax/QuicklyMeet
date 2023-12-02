@@ -8,6 +8,11 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
+
+
 @NgModule({
   declarations: [
     HomeComponent
@@ -16,6 +21,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
+    FullCalendarModule,
 
     FormsModule,
     ReactiveFormsModule,
