@@ -1,34 +1,23 @@
-import { Component } from '@angular/core';
-declare function HOMEINIT([]):any;
-declare var $:any;
-
-//CALENDAR
-import { OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import { HorarioService } from '../horario/service/horario.service';
+import * as moment from 'moment';  
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   
   modalRef?: BsModalRef;
   title: any;
   presentDays: number = 0;
-  AbsentDays: number = 0;
+  absentDays: number = 0;
   
-  events: any = [
-    {title:'Present', start: '2023-11-25', color: '#000ff'},
-    {title:'Present', start: '2023-11-25', color: '#000ff'},
-    {title:'Present', start: '2023-11-25', color: '#000ff'},
-    {title:'Absent', date: '2023-11-26', color: '#008080'},
-    {title:'Present', date: '2023-11-25', color: '#000ff'},
-  ];
+  events: any = [];
 
-  
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin],
@@ -43,28 +32,51 @@ export class HomeComponent {
   @ViewChild('template') template!: string;
   start: any;
 
-  constructor(private modalService: BsModalService){ }
+  constructor(
+    private modalService: BsModalService,
+    private _horarioService: HorarioService  // Asegúrate de inyectar tu servicio real en el constructor
+  ) { }
 
-  ngOnInit():void{
-    this.events.forEach((e: { [x:string]: string})=>{
-      if (e["title"]=='Present'){
-        this.presentDays++;
-      }else{
-        this.AbsentDays++;
+  ngOnInit(): void {
+    // Llama al método obtenerHorarios para obtener los eventos desde la base de datos
+    this._horarioService.getHorarios().subscribe(
+      (horarios: any) => {
+        this.events = horarios.map((evento: any) => ({
+          title: 'Present',
+          start: moment(evento.fecha, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+          color: '#000ff'
+        }));
+        console.log(this.events);
+        this.actualizarEstadisticas();
+  
+        // Mover la configuración del calendario aquí
+        this.calendarOptions = {
+          initialView: 'dayGridMonth',
+          plugins: [dayGridPlugin],
+          events: this.events,
+          eventClick: this.handleDateClick.bind(this),
+        };
+      },
+      (error: any) => {
+        console.error('Error al obtener los horarios:', error);
       }
-    });
-    console.log("Present " + this.presentDays);
-    console.log("Absent " + this.AbsentDays)
-
-  }
-  handleDateClick(arg:any){
-    console.log(arg);
-    console.log(arg.event._def.title);
-    this.start= arg.event.start;
-    this.title= arg.event._def.title;
-    this.modalRef = this.modalService.show(this.template, this.config);
+    );
   }
   
 
-}
+  handleDateClick(arg: any) {
+    console.log(arg);
+    console.log(this.events);
+    console.log(arg.event._def.title);
+    this.start = arg.event.start;  // Ajusta aquí si el campo es "fecha"
+    this.title = arg.event._def.title;
+    this.modalRef = this.modalService.show(this.template, this.config);
+  }
 
+  private actualizarEstadisticas() {
+    this.presentDays = this.events.filter((e: any) => e.title === 'Evento').length;
+    this.absentDays = this.events.length - this.presentDays;
+    console.log("Present " + this.presentDays);
+    console.log("Absent " + this.absentDays);
+  }
+}
