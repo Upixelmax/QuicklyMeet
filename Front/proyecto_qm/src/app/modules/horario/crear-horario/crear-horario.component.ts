@@ -4,22 +4,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HorarioService } from '../service/horario.service';
 import { Horario } from 'src/app/models/horario';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-crear-horario',
   templateUrl: './crear-horario.component.html',
-  styleUrls: ['./crear-horario.component.css']
+  styleUrls: ['./crear-horario.component.css'],
+  providers: [DatePipe],
 })
 
-export class CrearHorarioComponent implements OnInit{
+export class CrearHorarioComponent implements OnInit {
   horarioForm: FormGroup;
   titulo = 'Crear horario';
   id: string | null;
   constructor(private fb: FormBuilder,
-              private router: Router,
-              private toastr: ToastrService,
-              private _horarioService: HorarioService,
-              private aRouter: ActivatedRoute) { 
+    private router: Router,
+    private toastr: ToastrService,
+    private _horarioService: HorarioService,
+    private aRouter: ActivatedRoute,
+    private datePipe: DatePipe) {
     this.horarioForm = this.fb.group({
       fecha: ['', Validators.required],
       hora: ['', Validators.required],
@@ -33,34 +37,44 @@ export class CrearHorarioComponent implements OnInit{
   }
 
   agregarHorario() {
+    const fechaFormControl = this.horarioForm.get('fecha');
 
-    const HORARIO: Horario = {
-      fecha: this.horarioForm.get('fecha')?.value,
-      hora: this.horarioForm.get('hora')?.value,
-      estado: this.horarioForm.get('estado')?.value,
-    }
+    if (fechaFormControl) {
+      const fechaValor = fechaFormControl.value;
+      const fechaFormateada = this.datePipe.transform(fechaValor, 'dd-MM-yyyy');
 
-    if(this.id != null){
-      this._horarioService.editarHorario(this.id, HORARIO).subscribe(data => {
-        this.toastr.info('El horario fue actualizado con exito!', 'Horario Actualizado!');
-        this.router.navigate(['/horario']);
-      })
+      if (fechaFormateada) {
+        const HORARIO: Horario = {
+          fecha: fechaFormateada,
+          hora: this.horarioForm.get('hora')?.value,
+          estado: this.horarioForm.get('estado')?.value,
+        };
 
-    }else{
-      console.log(HORARIO);
-      this._horarioService.guardarHorario(HORARIO).subscribe(data => {
-        this.toastr.success('El horario fue registrado con exito!', 'Horario Registrado!');
-        this.router.navigate(['/horario']);
-      }, error => {
-        console.log(error);
-        this.horarioForm.reset();
-      }) 
+        if (this.id !== null) {
+          this._horarioService.editarHorario(this.id, HORARIO).subscribe(data => {
+            this.toastr.info('El horario fue actualizado con éxito!', 'Horario Actualizado!');
+            this.router.navigate(['/horario']);
+          });
+        } else {
+          this._horarioService.guardarHorario(HORARIO).subscribe(data => {
+            this.toastr.success('El horario fue registrado con éxito!', 'Horario Registrado!');
+            this.router.navigate(['/horario']);
+          }, error => {
+            console.log(error);
+            this.horarioForm.reset();
+          });
+        }
+      } else {
+        console.error('Error al formatear la fecha');
+      }
+    } else {
+      console.error('Error al obtener el control del formulario para la fecha');
     }
   }
 
   esEditar() {
 
-    if(this.id !== null) {
+    if (this.id !== null) {
       this.titulo = 'Editar horario';
       this._horarioService.obtenerHorario(this.id).subscribe(data => {
         this.horarioForm.setValue({

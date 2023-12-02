@@ -1,37 +1,44 @@
 <app-header></app-header>
+<div class="card">
+    <div class="card-body text-center">
+        <form [formGroup]="horarioForm" (ngSubmit)="agregarHorario()">
+            <div class="mb-3">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <div class="text-danger"
+                        *ngIf="horarioForm.get('fecha')?.hasError('required') && horarioForm.get('fecha')?.touched">
+                        <span>La fecha es <strong>Obligatoria</strong></span>
+                    </div>
+                </mat-form-field>
+            </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <span class="titulo">{{ titulo | uppercase}}</span>
-                    <form [formGroup]="horarioForm" (ngSubmit)="agregarHorario()">
-                        <div class="mb-3">
-                            <input type="text" formControlName="fecha" class="form-control form-control-lg" placeholder="Fecha">
-                            <div class="text-danger" *ngIf="horarioForm.get('fecha')?.hasError('required') && horarioForm.get('fecha')?.touched">
-                                <span>La fecha es <strong>Obligatoria</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" formControlName="hora" class="form-control form-control-lg" placeholder="Hora">
-                            <div class="text-danger" *ngIf="horarioForm.get('hora')?.hasError('required') && horarioForm.get('hora')?.touched">
-                                <span>La hora es <strong>Obligatoria</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
-                            <div class="text-danger" *ngIf="horarioForm.get('estado')?.hasError('required') && horarioForm.get('estado')?.touched">
-                                <span>El estado es <strong>Obligatorio</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
-                            <button type="submit" [disabled]="horarioForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
-                        </div>
-                    </form>
+            <div class="mb-3">
+                <mat-form-field>
+                    <input matInput [ngxTimepicker]="timepicker" placeholder="Hora" formControlName="hora" required>
+                    <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+                    <div class="text-danger"
+                        *ngIf="horarioForm.get('hora')?.hasError('required') && horarioForm.get('hora')?.touched">
+                        <span>La hora es <strong>Obligatoria</strong></span>
+                    </div>
+                </mat-form-field>
+            </div>
+
+            <div class="mb-3">
+                <!-- Agrega aquí los demás campos del formulario -->
+                <input type="text" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
+                <div class="text-danger"
+                    *ngIf="horarioForm.get('estado')?.hasError('required') && horarioForm.get('estado')?.touched">
+                    <span>El estado es <strong>Obligatorio</strong></span>
                 </div>
             </div>
-        </div>
+
+            <div class="mb-3">
+                <button routerLink="/horario" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                <button type="submit" [disabled]="horarioForm.invalid"
+                    class="btn btn-success btn-lg float-end">ACEPTAR</button>
+            </div>
+        </form>
     </div>
 </div>

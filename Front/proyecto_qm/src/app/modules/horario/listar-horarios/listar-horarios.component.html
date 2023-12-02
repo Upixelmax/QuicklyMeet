@@ -9,49 +9,52 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="header-info">
-                        <div class="logo">
-                            <a href="index.html">
-                                <div class="mt--10">
-                                    <h2 class="title">Listado de Horarios</h2>
-                                </div>
-                            
-                            </a>
+                        <div>
+                            <div class="mt--10">
+                                <h2 class="logo">Listado de Horarios</h2>
+                            </div>
                         </div>
                     </div>
-                    <a class="float-end mb--10 rbt-btn btn-gradient hover-icon-reverse" href="horario/crear-horario">
+                    <br>    
+                    <button class="btn btn-primary" id="ordenarfecha" (click)="alternarOrdenFecha()">Ordenar por Fecha</button>
+                    <a class="button-78 bg-primary" href="horario/crear-horario">
                         <span class="icon-reverse-wrapper">
-                            <span class="btn-text">Nuevo</span>
-                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                            <span class="btn-text ">Nuevo</span>
                         </span>
-                    </a>                    
-                    <table *ngIf="listHorarios.length > 0" class="table table-striped mt-3">
+                    </a>
+                    
+                    <br>
+                    <br>
+                    
+                    <table *ngIf="listHorarios.length > 0" class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col"></th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col"></th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let horario of listHorarios">
-                            <td>{{ horario.fecha }}</td>
-                            <td>{{ horario.hora }}</td>
-                            <td>{{ horario.estado }}</td>
-                            <td>
-                               
-                                
-                                <a class="float-end mb--10 rbt-btn btn-gradient " [routerLink]="['editar-horario', horario._id]"></a>
-                                
-                                <i (click)="eliminarHorario(horario._id)" class="fas fa-trash text-danger"></i>
-                            </td>
-                          </tr>
+                            <tr *ngFor="let horario of listHorarios">
+                                <td>{{ horario.fecha }}</td>
+                                <td>{{ horario.hora }}</td>
+                                <td
+                                    [ngClass]="{'reservado': horario.estado === 'Reservado', 'disponible': horario.estado === 'Disponible'}">
+                                    {{ horario.estado }}
+                                </td>
+                                <td>
+                                    <i (click)="eliminarHorario(horario._id)" class="fas fa-trash text-danger"></i>
+                                    <i class="fas fa-edit text-primary"
+                                        [routerLink]="['editar-horario', horario._id]"></i>
+                                </td>
+                            </tr>
                         </tbody>
-                      </table>
-                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listHorarios.length == 0">No hay horarios para mostrar</h5>
+                    </table>
+                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listHorarios.length == 0">No hay horarios
+                        para mostrar</h5>
                 </div>
             </div>
         </div>
     </div>
-  </div>
+</div>
