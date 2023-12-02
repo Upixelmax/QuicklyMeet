@@ -15,12 +15,17 @@
                             </div>
                         </div>
                     </div>
-                    <a class="button-78" href="horario/crear-horario">
+                    <br>    
+                    <button class="btn btn-primary" id="ordenarfecha" (click)="alternarOrdenFecha()">Ordenar por Fecha</button>
+                    <a class="button-78 bg-primary" href="horario/crear-horario">
                         <span class="icon-reverse-wrapper">
-                            <span class="btn-text">Nuevo</span>
+                            <span class="btn-text ">Nuevo</span>
                         </span>
                     </a>
-                    <button class="btn btn-primary" (click)="alternarOrdenFecha()">Ordenar por Fecha</button>
+                    
+                    <br>
+                    <br>
+                    
                     <table *ngIf="listHorarios.length > 0" class="table">
                         <thead>
                             <tr>
