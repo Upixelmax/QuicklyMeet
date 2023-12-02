@@ -15,6 +15,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
+
+//CALENDAR
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +40,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ModalModule.forRoot(),
+    FullCalendarModule,//CALENDAR
   ],
   providers: [],
   bootstrap: [AppComponent]
