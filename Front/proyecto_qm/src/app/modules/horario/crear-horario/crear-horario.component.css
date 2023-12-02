@@ -2,3 +2,254 @@
     text-align: start;
     margin-left: 7px;
 }
+
+.logo {
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+.left-column {
+    flex: 1; /* La columna izquierda ocupará el 50% del espacio disponible */
+    margin-right: 20px; /* Puedes ajustar según tus necesidades para dar espacio entre las columnas */
+}
+
+.two-columns-container {
+    display: flex;
+    justify-content: space-between; /* Puedes ajustar según tus necesidades */
+}
+.left-column img {
+    width: 90%; /* La imagen ocupará el 100% del ancho de su contenedor */
+    height: 75%;
+    margin-left: 150px; /* Ajustará automáticamente la altura según el ancho */
+}
+
+.buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#fecha-formulario{
+    margin-top: 30px;
+    width:50%;
+    margin-bottom: 10px;
+    
+}
+
+#hora-formulario{
+    width:50%;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    
+}
+
+#estado-horario{
+    flex: 1;
+    width:50%;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: 195px;
+}
+
+.formulario-horario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-bottom: 200px;
+}
+
+.button-78 {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    overflow: visible;
+    pointer-events: auto;
+    position: relative;
+    touch-action: manipulation;
+    width: auto;
+    word-break: keep-all;
+    z-index: 0;
+    height: 60px;
+    background-color: #fff;
+    margin-left: 120px;
+  }
+  
+  @media (min-width: 768px) {
+    .button-78 {
+      padding: 19px 32px;
+      line-height: normal;
+    }
+  }
+  
+  .button-78:before,
+  .button-78:after {
+    border-radius: 20px;
+  }
+  
+  .button-78:before {
+    background-image: linear-gradient(92.83deg, rgb(13, 185, 253)  0, rgb(13, 185, 253) 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+  }
+  
+  .button-78:after {
+    background-color: initial;
+    background-image: linear-gradient(#9a77bd 0, rgba(60,9,121,0.5298494397759104) 100%);
+    bottom: 0px;
+    content: "";
+    display: block;
+    left: 0px;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+  }
+  
+  .button-78:hover:not(:disabled):before {
+    background: linear-gradient(92.83deg, rgba(60,9,121,0.5298494397759104) 0%, rgb(13, 185, 253) 100%);
+  }
+  
+  .button-78:hover:not(:disabled):after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  
+  .button-78:active:not(:disabled) {
+    color: #ccc;
+  }
+  
+  .button-78:active:not(:disabled):before {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #b747d3 0, #2facf5 100%);
+  }
+  
+  .button-78:active:not(:disabled):after {
+    background-image: linear-gradient(#cb45ec 0, #2facf5 100%);
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+  }
+  
+  .button-78:disabled {
+    cursor: default;
+    opacity: .24;
+  }
+
+
+
+  /*#####################################################*/
+  .button-79 {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    overflow: visible;
+    pointer-events: auto;
+    position: relative;
+    touch-action: manipulation;
+    width: auto;
+    word-break: keep-all;
+    z-index: 0;
+    height: 60px;
+    background-color: #fff;
+  }
+  
+  @media (min-width: 768px) {
+    .button-79 {
+      padding: 19px 32px;
+      line-height: normal;
+    }
+  }
+  
+  .button-79:before,
+  .button-79:after {
+    border-radius: 20px;
+  }
+  
+  .button-79:before {
+    background-image: linear-gradient(92.83deg, rgb(87, 93, 95)  0, rgb(5, 12, 15) 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+  }
+  
+  .button-79:after {
+    background-color: initial;
+    background-image: linear-gradient(#0b090c 0, rgba(119, 116, 116, 0.53) 100%);
+    bottom: 0px;
+    content: "";
+    display: block;
+    left: 0px;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+  }
+  
+  .button-79:hover:not(:disabled):before {
+    background: linear-gradient(92.83deg, rgba(57, 55, 58, 0.53) 0%, rgb(46, 47, 48) 100%);
+  }
+  
+  .button-79:hover:not(:disabled):after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  
+  .button-79:active:not(:disabled) {
+    color: #ccc;
+  }
+  
+  .button-79:active:not(:disabled):before {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #424242 0, #babfc2 100%);
+  }
+  
+  .button-79:active:not(:disabled):after {
+    background-image: linear-gradient(#201d20 0, #2b2d2e 100%);
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+  }
+  
+  .button-79:disabled {
+    cursor: default;
+    opacity: .24;
+  }
