@@ -9,19 +9,20 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="header-info">
-                        <div class="logo">
+                        <div>
                             <div class="mt--10">
-                                <h2 class="title">Listado de Horarios</h2>
+                                <h2 class="logo">Listado de Horarios</h2>
                             </div>
                         </div>
                     </div>
-                    <a class="float-end mb--10 rbt-btn btn-gradient hover-icon-reverse" href="horario/crear-horario">
+                    <a class="button-78" href="horario/crear-horario">
                         <span class="icon-reverse-wrapper">
                             <span class="btn-text">Nuevo</span>
                         </span>
                     </a>
+                    <button class="btn btn-primary" (click)="alternarOrdenFecha()">Ordenar por Fecha</button>
                     <table *ngIf="listHorarios.length > 0" class="table">
-                        <thead class="thead-dark">
+                        <thead>
                             <tr>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora</th>
@@ -33,10 +34,14 @@
                             <tr *ngFor="let horario of listHorarios">
                                 <td>{{ horario.fecha }}</td>
                                 <td>{{ horario.hora }}</td>
-                                <td>{{ horario.estado }}</td>
+                                <td
+                                    [ngClass]="{'reservado': horario.estado === 'Reservado', 'disponible': horario.estado === 'Disponible'}">
+                                    {{ horario.estado }}
+                                </td>
                                 <td>
                                     <i (click)="eliminarHorario(horario._id)" class="fas fa-trash text-danger"></i>
-                                    <i class="fas fa-edit text-primary" [routerLink]="['editar-horario', horario._id]"></i>
+                                    <i class="fas fa-edit text-primary"
+                                        [routerLink]="['editar-horario', horario._id]"></i>
                                 </td>
                             </tr>
                         </tbody>
