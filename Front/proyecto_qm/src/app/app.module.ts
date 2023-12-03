@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
-import { HomePrestadorComponent } from './modules/home-prestador/home-prestador.component';
+
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -21,13 +21,14 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeSolicitanteComponent } from './modules/home-solicitante/home-solicitante.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePrestadorComponent
+    HomeSolicitanteComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePrestadorComponent } from './modules/home-prestador/home-prestador.component';
+
 //import { AuthGuard } from './modules/auth/service/auth.guard';
 
 export const routes:Routes = [
@@ -14,11 +14,6 @@ export const routes:Routes = [
     path: 'home',
     // canActivate: [AuthGuard],
     loadChildren: () => import("./modules/home/home.module").then(m => m.HomeModule),
-  },
-  {
-    path: 'home-prestador',
-    // canActivate: [AuthGuard],
-    component: HomePrestadorComponent,
   },
   {
     path: 'horario',

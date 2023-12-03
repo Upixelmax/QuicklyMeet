@@ -1,0 +1,32 @@
+.navbar-brand{
+    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    margin: 0px 20px ;
+}
+
+.navbar{
+    background-color: rgb(55, 136, 216);
+}
+
+#logout{
+    font-size: 20px;
+}
+
+.navbar-brand {
+    animation-name: letter-appear;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: calc(0.05s * (index() - 1));
+  }
+  
+  @keyframes letter-appear {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HorarioService } from '../horario/service/horario.service';
 import * as moment from 'moment';  
 import { AuthService } from '../auth/service/auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -1,11 +1,12 @@
-.row {}
-
-.col-lg-8 {
-
-    margin-bottom: 20px;
+.col-lg-4{
+    padding-top: 100px;
 }
 
-.col-lg-4 {}
+
+
+.btn{
+    height: 70px;
+}
 
 #fila_titulo {
     padding-top: 20px;
@@ -14,8 +15,8 @@
 }
 
 #icon_calendar {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 #boton_calendario {
@@ -29,7 +30,7 @@
 #centrar_horario {
     text-align: center;
     /* Centrar horizontalmente */
-    line-height: 50px;
+    line-height: 0px;
     font-size: 50px;
     font-size: 1.8rem;
     font-family: 'Montserrat', sans-serif;
