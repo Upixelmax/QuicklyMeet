@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { HorarioService } from '../horario/service/horario.service';
 import * as moment from 'moment';  
+import { AuthService } from '../auth/service/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   title: any;
   presentDays: number = 0;
   absentDays: number = 0;
+  user:any;
   
   events: any = [];
 
@@ -34,11 +36,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private _horarioService: HorarioService  // Asegúrate de inyectar tu servicio real en el constructor
+    private _horarioService: HorarioService,  // Asegúrate de inyectar tu servicio real en el constructor
+    private _AuthService:AuthService
   ) { }
 
   ngOnInit(): void {
     // Llama al método obtenerHorarios para obtener los eventos desde la base de datos
+    console.log(this._AuthService.getUser());
+    this.user = this._AuthService.getUser();
     this._horarioService.getHorarios().subscribe(
       (horarios: any) => {
         this.events = horarios.map((evento: any) => ({
