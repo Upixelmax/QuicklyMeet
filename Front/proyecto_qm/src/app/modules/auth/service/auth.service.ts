@@ -46,4 +46,12 @@ export class AuthService {
     let URL = URL_SERVICIOS+"/users/register";
     return this.http.post(URL,data);
   }
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  getUser(): any | null {
+    const userString = localStorage.getItem('user');
+    return userString ? JSON.parse(userString) : null;
+  }
 }
