@@ -1,36 +1,53 @@
 <app-header></app-header>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <span class="titulo">{{ titulo | uppercase}}</span>
-                    <form [formGroup]="horarioForm" (ngSubmit)="editarHorario()" >
-                        <div class="mb-3">
-                            <input type="text" formControlName="fecha" class="form-control form-control-lg" placeholder="Fecha">
-                            <div class="text-danger" *ngIf="horarioForm.get('fecha')?.hasError('required') && horarioForm.get('fecha')?.touched">
-                                <span>La fecha es <strong>Obligatoria</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" formControlName="hora" class="form-control form-control-lg" placeholder="Hora">
-                            <div class="text-danger" *ngIf="horarioForm.get('hora')?.hasError('required') && horarioForm.get('hora')?.touched">
-                                <span>La hora es <strong>Obligatoria</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
-                            <div class="text-danger" *ngIf="horarioForm.get('estado')?.hasError('required') && horarioForm.get('estado')?.touched">
-                                <span>El estado es <strong>Obligatorio</strong></span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <button routerLink="/horario" class="btn btn-secondary btn-lg float-start">VOLVER</button>
-                            <button type="submit" [disabled]="horarioForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div>
+    <h1 class="logo text-center mt-5">Editar un horario de atención</h1>
+    <div class="two-columns-container">
+        <!-- Columna izquierda con la imagen -->
+        <div class="left-column">
+            <!-- Coloca aquí la etiqueta de la imagen con el camino correcto src -->
+            <img src="assets/images/edit.png" alt="Descripción de la imagen">
         </div>
+
+        <!-- Columna derecha con el formulario -->
+        <form class="formulario-horario" [formGroup]="horarioForm" (ngSubmit)="editarHorario()">
+
+            <mat-form-field appearance="fill" id="fecha-formulario">
+                <mat-label>Fecha</mat-label>
+                <input matInput formControlName="fecha" placeholder="Fecha">
+            </mat-form-field>
+            <div class="text-danger"
+                *ngIf="horarioForm.get('fecha')?.hasError('required') && horarioForm.get('fecha')?.touched">
+                <span>La fecha es <strong>Obligatoria</strong></span>
+            </div>
+
+
+            <mat-form-field id="hora-formulario">
+                <input matInput [ngxTimepicker]="timepicker" placeholder="Hora" formControlName="hora" required>
+                <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+                <div class="text-danger"
+                    *ngIf="horarioForm.get('hora')?.hasError('required') && horarioForm.get('hora')?.touched">
+                    <span>La hora es <strong>Obligatoria</strong></span>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field id="estado-horario">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado" required>
+                    <mat-option value="Disponible">Disponible</mat-option>
+                    <mat-option value="Reservado">Reservado</mat-option>
+                </mat-select>
+                <mat-error
+                    *ngIf="horarioForm.get('estado')?.hasError('required') && horarioForm.get('estado')?.touched">
+                    El estado es <strong>Obligatorio</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Botones en la misma fila -->
+            <div class="buttons-container">
+                <button routerLink="/horario" class="button-79">VOLVER</button>
+                <button type="submit" class="button-78">ACEPTAR</button>
+            </div>
+
+        </form>
     </div>
 </div>

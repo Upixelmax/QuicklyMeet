@@ -12,10 +12,10 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn btn-primary" id="nuevo" href="horario/crear-horario">Nuevo</a> 
+                    <a class="btn btn-primary" id="nuevo" href="horario/crear-horario">Nuevo</a>
                     <br>
                     <br>
-                    
+
                     <table *ngIf="listHorarios.length > 0" class="table">
                         <thead>
                             <tr>
@@ -38,8 +38,9 @@
                                     {{ horario.estado }}
                                 </td>
                                 <td>
-                                    <i (click)="eliminarHorario(horario._id)" class="fas fa-trash text-danger"></i>
-                                    <i class="fas fa-edit text-primary"
+                                    <i (click)="confirmarEliminarHorario(horario._id)"
+                                        class="fas fa-trash text-danger fa-lg"></i>
+                                    <i class="fas fa-edit text-primary fa-lg"
                                         [routerLink]="['editar-horario', horario._id]"></i>
                                 </td>
                             </tr>

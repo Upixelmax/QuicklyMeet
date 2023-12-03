@@ -30,6 +30,15 @@ export class ListarHorariosComponent implements OnInit {
     });
   }
 
+  // Función para mostrar la confirmación antes de eliminar un horario
+  confirmarEliminarHorario(id: any) {
+    const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este horario?');
+
+    if (confirmacion) {
+      this.eliminarHorario(id);
+    }
+  }
+
   eliminarHorario(id: any) {
     this._horarioService.eliminarHorario(id).subscribe(data => {
       this.toastr.error('El horario fue eliminado con éxito', 'Horario Eliminado');
