@@ -1,1 +1,35 @@
-<p>home-solicitante works!</p>
+<app-header-home-solicitante></app-header-home-solicitante>
+
+
+<div id="fila_titulo" class="row ">
+    <h1 id="titulo_home" class="text-center">Próximas Reuniones</h1>
+</div>
+
+<div id="fila_titulo" class="row ">
+    <div class="col-lg-8">
+        <div class="container px-4 text-center">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div id="boton_calendario" class="row">
+            <a class="btn text-white mt-0" id="primero" data-mdb-ripple-init style="background-color: rgb(92, 75, 126);"
+                href="horario" role="button">
+                <img id="icon_calendar" src="assets/images/icon-calendar-1.png" class="rounded float-start" alt="...">
+                <br>
+                <p id="centrar_horario">Reservar</p>
+            </a>
+
+
+            <a class="btn text-white mt-3" data-mdb-ripple-init style="background-color: rgb(92, 75, 126);" href="#!"
+                role="button">
+                <img id="icon_calendar" src="assets/images/icon-cerrar.png" class="rounded float-start" alt="...">
+                <br>
+                <p id="centrar_horario">Cerrar Sesión</p>
+            </a>
+
+
+        </div>
+
+    </div>
+</div>

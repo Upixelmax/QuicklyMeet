@@ -1,0 +1,53 @@
+.col-lg-4 {
+    padding-top: 100px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.btn {
+    height: 70px;
+}
+
+#fila_titulo {
+    padding-top: 20px;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.fc-day, .fc-day-top {
+    text-decoration: none !important;
+    /* Remove underlining */
+}
+
+#icon_calendar {
+    width: 50px;
+    height: 50px;
+}
+
+#boton_calendario {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+}
+
+#centrar_horario {
+    text-align: center;
+    /* Centrar horizontalmente */
+    line-height: 0px;
+    font-size: 50px;
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+#titulo_home {
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: black;
+}

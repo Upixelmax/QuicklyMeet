@@ -41,10 +41,10 @@ export class LoginComponent {
       
       
       if (resp.rol === 'cliente') {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home-solicitante');
       } else if (resp.rol === 'Prestador') {
         // Lógica para el rol de administrador
-        this.router.navigateByUrl('/home-prestador');
+        this.router.navigateByUrl('/home');
       } else {
         alert("LAS CREDENCIALES INGRESADAS SON INCORRECTAS");
       }

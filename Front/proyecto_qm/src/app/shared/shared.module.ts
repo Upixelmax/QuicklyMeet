@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderHomeComponent } from './header-home/header-home.component';
+import { HeaderHomeSolicitanteComponent } from './header-home-solicitante/header-home-solicitante.component';
 
 
 
@@ -10,7 +11,8 @@ import { HeaderHomeComponent } from './header-home/header-home.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    HeaderHomeComponent
+    HeaderHomeComponent,
+    HeaderHomeSolicitanteComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { HeaderHomeComponent } from './header-home/header-home.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    HeaderHomeComponent
+    HeaderHomeComponent,
+    HeaderHomeSolicitanteComponent
   ]
   
 })
