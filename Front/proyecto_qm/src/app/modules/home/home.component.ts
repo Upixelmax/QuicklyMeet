@@ -37,25 +37,24 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private _horarioService: HorarioService,  // Asegúrate de inyectar tu servicio real en el constructor
+    private _horarioService: HorarioService,
     private _AuthService:AuthService
   ) { }
 
   ngOnInit(): void {
-    // Llama al método obtenerHorarios para obtener los eventos desde la base de datos
     console.log(this._AuthService.getUser());
     this.user = this._AuthService.getUser();
+
     this._horarioService.getHorarios().subscribe(
       (horarios: any) => {
         this.events = horarios.map((evento: any) => ({
-          title: 'Present',
+          title: evento.estado,
           start: moment(evento.fecha, 'DD-MM-YYYY').format('YYYY-MM-DD'),
-          color: '#000ff'
+          color: this.getColorForEstado(evento.estado),
         }));
         console.log(this.events);
         this.actualizarEstadisticas();
   
-        // Mover la configuración del calendario aquí
         this.calendarOptions = {
           initialView: 'dayGridMonth',
           plugins: [dayGridPlugin],
@@ -69,12 +68,11 @@ export class HomeComponent implements OnInit {
     );
   }
   
-
   handleDateClick(arg: any) {
     console.log(arg);
     console.log(this.events);
     console.log(arg.event._def.title);
-    this.start = arg.event.start;  // Ajusta aquí si el campo es "fecha"
+    this.start = arg.event.start;
     this.title = arg.event._def.title;
     this.modalRef = this.modalService.show(this.template, this.config);
   }
@@ -85,4 +83,9 @@ export class HomeComponent implements OnInit {
     console.log("Present " + this.presentDays);
     console.log("Absent " + this.absentDays);
   }
+
+  private getColorForEstado(estado: string): string {
+    return estado === 'Disponible' ? '#069606' : (estado === 'Reservado' ? '#b50909' : '#000000');
+  }
+  
 }

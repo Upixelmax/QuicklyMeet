@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import * as moment from 'moment';
 import { HorarioService } from '../horario/service/horario.service';
-import * as moment from 'moment';  
 import { AuthService } from '../auth/service/auth.service';
 
 @Component({
@@ -11,76 +11,69 @@ import { AuthService } from '../auth/service/auth.service';
   templateUrl: './home-solicitante.component.html',
   styleUrls: ['./home-solicitante.component.css']
 })
-
 export class HomeSolicitanteComponent implements OnInit {
-  
   modalRef?: BsModalRef;
   title: any;
-  presentDays: number = 0;
-  absentDays: number = 0;
-  user:any;
-  
-  events: any = [];
-
+  presentDays = 0;
+  absentDays = 0;
+  user: any;
+  events: any[] = [];
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin],
     events: this.events,
     editable: false,
   };
-
   config = {
     animated: true
   };
-  
   @ViewChild('template') template!: string;
-  start: any;
+  startDate: any;
 
   constructor(
     private modalService: BsModalService,
-    private _horarioService: HorarioService,  // Asegúrate de inyectar tu servicio real en el constructor
-    private _AuthService:AuthService
+    private horarioService: HorarioService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    // Llama al método obtenerHorarios para obtener los eventos desde la base de datos
-    console.log(this._AuthService.getUser());
-    this.user = this._AuthService.getUser();
+    this.loadSchedule();
+  }
+
+  loadSchedule(): void {
+    this.user = this.authService.getUser();
     console.log(this.user.email);
-    
-    
 
-
-    this._horarioService.getHorarios().subscribe(
+    this.horarioService.getHorarios().subscribe(
       (horarios: any) => {
-        this.events = horarios.map((evento: any) => ({
-          title: 'Present',
-          start: moment(evento.fecha, 'DD-MM-YYYY').format('YYYY-MM-DD'),
-          color: '#5c4b7e'
-        }));
+        // Filtrar eventos por estado 'Disponible'
+        this.events = horarios
+          .filter((evento: any) => evento.estado === 'Disponible')
+          .map((evento: any) => ({
+            title: evento.estado,
+            start: moment(evento.fecha, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+            color: this.getColorForEstado(evento.estado),
+          }));
+
         console.log(this.events);
         this.actualizarEstadisticas();
-  
-        // Mover la configuración del calendario aquí
-        this.calendarOptions = {
-          initialView: 'dayGridMonth',
-          plugins: [dayGridPlugin],
-          events: this.events,
-          editable: false,
-        };
+        this.updateCalendarOptions();
       },
       (error: any) => {
-        console.error('Error al obtener los horarios:', error);
+        console.error('Error fetching schedules:', error);
       }
     );
   }
-  
+
+  getColorForEstado(estado: string): string {
+    return estado === 'Disponible' ? '#069606' : (estado === 'Reservado' ? '#b50909' : '#000000');
+  }
 
   handleDateClick(arg: any) {
     console.log(arg);
     console.log(this.events);
     console.log(arg.event._def.title);
-    this.start = arg.event.start;  // Ajusta aquí si el campo es "fecha"
+    this.startDate = arg.event.start;
     this.title = arg.event._def.title;
     this.modalRef = this.modalService.show(this.template, this.config);
   }
@@ -90,5 +83,14 @@ export class HomeSolicitanteComponent implements OnInit {
     this.absentDays = this.events.length - this.presentDays;
     console.log("Present " + this.presentDays);
     console.log("Absent " + this.absentDays);
+  }
+
+  private updateCalendarOptions() {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      plugins: [dayGridPlugin],
+      events: this.events,
+      editable: false,
+    };
   }
 }

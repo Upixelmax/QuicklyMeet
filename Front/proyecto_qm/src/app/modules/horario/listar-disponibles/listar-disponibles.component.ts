@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 export class ListarDisponiblesComponent implements OnInit {
   listHorarios: Horario[] = [];
   fechaOrdenAscendente: boolean = true;
-  user:any;
-  usuario:string='';
+  user: any;
+  usuario: string = '';
   public horario: any;
 
   constructor(
@@ -37,12 +37,12 @@ export class ListarDisponiblesComponent implements OnInit {
     });
   }
 
-  // Función para mostrar la confirmación antes de eliminar un horario
-  confirmarEliminarHorario(id: any) {
-    const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este horario?');
+  // Función para mostrar la confirmación antes de reservar un horario
+  confirmarReserva(horario: any) {
+    const confirmacion = window.confirm(`¿Estás seguro de que quieres reservar el horario ${horario.fecha} a las ${horario.hora}?`);
 
     if (confirmacion) {
-      this.eliminarHorario(id);
+      this.reserva(horario);
     }
   }
 
@@ -59,11 +59,11 @@ export class ListarDisponiblesComponent implements OnInit {
     this.listHorarios.sort((a, b) => {
       const fechaA = this.convertirStringAFecha(a.fecha);
       const fechaB = this.convertirStringAFecha(b.fecha);
-  
+
       return this.fechaOrdenAscendente ? fechaA.getTime() - fechaB.getTime() : fechaB.getTime() - fechaA.getTime();
     });
   }
-  
+
   convertirStringAFecha(fechaString: string): Date {
     const [dia, mes, anio] = fechaString.split('-').map(Number);
     return new Date(anio, mes - 1, dia); // Restamos 1 al mes ya que en JavaScript los meses son 0-indexados
@@ -74,7 +74,8 @@ export class ListarDisponiblesComponent implements OnInit {
     this.ordenarPorFecha();
   }
 
-  reserva(data:any){
+  // Función para reservar un horario
+  reserva(data: any) {
     this.user = this._authService.getUser();
     const HORARIO: Horario = {
       fecha: data.fecha,
@@ -83,7 +84,8 @@ export class ListarDisponiblesComponent implements OnInit {
       idUser: this.user.usuarioid
     }
     this._horarioService.editarHorario(data._id, HORARIO).subscribe(res => {
-      this.toastr.info('El horario fue actualizado con exito!', 'Horario Actualizado!');
+      this.toastr.info('El horario fue reservado con éxito!', 'Horario Actualizado!');
+      this.router.navigate(['/home-solicitante']);
     })
   }
 }
