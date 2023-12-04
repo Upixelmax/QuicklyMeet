@@ -16,7 +16,10 @@ const HorarioSchema = mongoose.Schema({
     fechaCreación: {
         type: Date,
         default: Date.now()
-    }
+    },
+    idUser: { 
+        type: mongoose.Schema.Types.ObjectId, ref: 'User', 
+        default: null }
 });
 
 module.exports = mongoose.model('Horario', HorarioSchema);

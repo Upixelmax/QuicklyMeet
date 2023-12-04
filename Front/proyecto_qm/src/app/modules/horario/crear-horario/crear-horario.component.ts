@@ -48,6 +48,7 @@ export class CrearHorarioComponent implements OnInit {
           fecha: fechaFormateada,
           hora: this.horarioForm.get('hora')?.value,
           estado: this.horarioForm.get('estado')?.value,
+          idUser:null
         };
 
         if (this.id !== null) {

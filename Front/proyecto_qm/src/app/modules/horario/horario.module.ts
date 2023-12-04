@@ -19,6 +19,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ListarDisponiblesComponent } from './listar-disponibles/listar-disponibles.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     HorarioComponent,
     ListarHorariosComponent,
     CrearHorarioComponent,
-    EditarHorarioComponent
+    EditarHorarioComponent,
+    ListarDisponiblesComponent
   ],
   imports: [
     CommonModule,

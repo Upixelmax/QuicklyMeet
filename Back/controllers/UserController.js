@@ -49,6 +49,7 @@ export default {
                             surname: user.surname,
                             email: user.email,
                             rol: user.rol, 
+                            usuarioid: user._id,
                         }
                     }
                     res.status(200).json({
@@ -71,4 +72,5 @@ export default {
             });
         }
     },
+    
 }

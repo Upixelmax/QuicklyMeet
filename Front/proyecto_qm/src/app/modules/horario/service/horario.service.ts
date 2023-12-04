@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Horario } from 'src/app/models/horario';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Horario } from 'src/app/models/horario';
 export class HorarioService {
 
   url = 'http://localhost:3000/api/horario/';
+  urlreserva = 'http://localhost:3000/api/horario/reservar';
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +23,7 @@ export class HorarioService {
   }
 
   guardarHorario(horario: Horario): Observable<any> {
+    console.log(this.url+horario);
     return this.http.post(this.url, horario);
   }
 
@@ -29,6 +32,9 @@ export class HorarioService {
   }
 
   editarHorario(id: string, horario: Horario): Observable<any> {
+    console.log(horario);
     return this.http.put(this.url + id, horario);
   } 
+
+  
 }

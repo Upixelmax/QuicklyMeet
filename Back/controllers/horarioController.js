@@ -28,11 +28,10 @@ exports.obtenerHorarios = async (req, res) => {
     }
 }
 
-
 exports.actualizarHorario = async (req, res) => {
     try{
 
-        const {fecha, hora, estado} = req.body;
+        const {fecha, hora, estado, idUser} = req.body;
         let horario = await Horario.findById(req.params.id);
 
         if(!horario){
@@ -42,6 +41,7 @@ exports.actualizarHorario = async (req, res) => {
         horario.fecha = fecha;
         horario.hora = hora;
         horario.estado = estado;
+        horario.idUser = idUser;
 
         horario = await Horario.findOneAndUpdate({ _id: req.params.id }, horario, {new: true });
         res.json(horario);

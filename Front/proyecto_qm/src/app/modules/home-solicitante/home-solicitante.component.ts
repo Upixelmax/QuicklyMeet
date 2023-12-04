@@ -46,6 +46,11 @@ export class HomeSolicitanteComponent implements OnInit {
     // Llama al método obtenerHorarios para obtener los eventos desde la base de datos
     console.log(this._AuthService.getUser());
     this.user = this._AuthService.getUser();
+    console.log(this.user.email);
+    
+    
+
+
     this._horarioService.getHorarios().subscribe(
       (horarios: any) => {
         this.events = horarios.map((evento: any) => ({

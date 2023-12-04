@@ -45,6 +45,7 @@ export class EditarHorarioComponent {
       fecha: this.horarioForm.get('fecha')?.value,
       hora: this.horarioForm.get('hora')?.value,
       estado: this.horarioForm.get('estado')?.value,
+      idUser: null
     }
 
     if(this.id != null){
