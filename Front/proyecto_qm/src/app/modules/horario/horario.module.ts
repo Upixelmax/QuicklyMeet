@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ListarDisponiblesComponent } from './listar-disponibles/listar-disponibles.component';
+import { ListarReservadosComponent } from './listar-reservados/listar-reservados.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ListarDisponiblesComponent } from './listar-disponibles/listar-disponib
     ListarHorariosComponent,
     CrearHorarioComponent,
     EditarHorarioComponent,
-    ListarDisponiblesComponent
+    ListarDisponiblesComponent,
+    ListarReservadosComponent
   ],
   imports: [
     CommonModule,

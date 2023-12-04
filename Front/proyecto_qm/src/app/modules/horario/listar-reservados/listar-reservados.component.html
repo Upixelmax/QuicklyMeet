@@ -1,0 +1,51 @@
+<app-header-home-solicitante></app-header-home-solicitante>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="header-info">
+                        <div>
+                            <div class="mt--10">
+                                <h2 class="logo">Listado de Horarios Disponibles</h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <br>
+
+                    <table *ngIf="listHorarios.length > 0" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha
+                                    <button id="ordenarfecha" (click)="alternarOrdenFecha()">
+                                        <i class="fas fa-sort"></i>
+                                    </button>
+                                </th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let horario of listHorarios">
+                                <ng-container *ngIf="horario.estado === 'Reservado'">
+                                    <td>{{ horario.fecha }}</td>
+                                    <td>{{ horario.hora }}</td>
+                                    <td class="reservado">{{ horario.estado }}</td>
+                                    <td>
+                                        <i (click)="confirmarReserva(horario)" class="fas fa-trash text-danger fa-lg"></i>
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listHorarios.length == 0">No hay horarios
+                        para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

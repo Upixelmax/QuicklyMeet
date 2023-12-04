@@ -5,6 +5,7 @@ import { ListarHorariosComponent } from './listar-horarios/listar-horarios.compo
 import { CrearHorarioComponent } from './crear-horario/crear-horario.component';
 import { EditarHorarioComponent } from './editar-horario/editar-horario.component';
 import { ListarDisponiblesComponent } from './listar-disponibles/listar-disponibles.component';
+import { ListarReservadosComponent } from './listar-reservados/listar-reservados.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,6 +14,10 @@ const routes: Routes = [{
 {
   path: 'listar',
   component:ListarDisponiblesComponent,
+},
+{
+  path: 'reservados',
+  component:ListarReservadosComponent,
 },
 {
   path: 'crear-horario', 
